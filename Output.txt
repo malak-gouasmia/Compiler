@@ -1,0 +1,37 @@
+***Les routines semantiques pour l'instruction Si-Sinon***
+Si - R1: Verifie_Condition
+QUAD (Qc) := (BZ,sauv-debut-else , <condition>, ) 
+sauv-debut-else := Qc 
+Qc := Qc+1 
+Si - R2: bloc d'intruction de IF
+QUAD (Qc) := (BR,sauv-fin-si , , ) 
+sauv-fin-si := Qc 
+Qc := Qc + 1 
+QUAD (sauv-debut-else, 2) := Qc (position courant debut else) 
+Definition de ELSE est correcte
+FSI - R3: : Fin IF apres ELSE
+QUAD (sauv-fin-si, 2) := Qc 
+******
+
+Debut condition FOR - R1
+debut-cnd-for := Qc 
+******
+
+***Les routines semantiques pour l'instruction For***
+For - R1: Verifie_Condition et branchement debut block
+QUAD (Qc) := (BZ, fin-for ,<condition> , ) 
+sauv-fin-for := Qc 
+Qc := Qc+1 
+QUAD (Qc) :=(BR, debut-block-for, , ) 
+sauv-debut-blok-for := Qc 
+Qc := Qc+1 
+FOR-R2: Stocker debut d'incrementation
+debut-inc := Qc 
+FOR-R3: apres incremnetation Routine branchement vers condition
+QUAD (Qc) := (BR, debut-cnd-for , , )
+Qc := Qc+1 
+QUAD(sauv-debut-blok-for, 2) := Qc
+FOR-R4: de block vers branchent incrementation
+QUAD (Qc) := (BR, debut-inc , , ) 
+Qc := Qc+1 
+QUAD (sauv-fin-for, 2) := Qc 

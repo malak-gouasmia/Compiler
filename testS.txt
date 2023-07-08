@@ -1,0 +1,14 @@
+@Prog_test; 
+t_int fnc1(){ return 5; } 
+proc procedure2(t_int para3, t_int para3){ para1 <- 12.6; }  
+main(){ 
+t_int a; procedure2(a,a,a);
+fcn1 <- 5;
+t_int[6] tab;
+tab[9] <- 6;
+?(5=0){}
+:{}
+t_int ind;
+iterator ( ind <- 1 , ind <= 10 , 2 ){ t_int A; t_int A; }  
+}
+FIN 
